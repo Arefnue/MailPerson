@@ -8,8 +8,9 @@ public class GetRandomPointOnNavMesh : MonoBehaviour
     public float range = 10.0f;
     public int numberOfPost = 3;
     public float maxDistance =1.0f;
+    public float postHeight = 0.25f;
 
-    public GameObject[] prefabs;
+    public GameObject[] postPrefabs;
 
     public bool redPostOn = false;
     public bool bluePostOn = false;
@@ -31,27 +32,27 @@ public class GetRandomPointOnNavMesh : MonoBehaviour
 		if (RandomPoint(transform.position, range, out point)) {
 			Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
             
-            point.y = 0.25f;
+            point.y = postHeight;
 
             if(!redPostOn)
             {
-                Instantiate(prefabs[0],point,Quaternion.identity);
+                Instantiate(postPrefabs[0],point,Quaternion.identity);
                 redPostOn = true;
                 
             }
             else if(!bluePostOn)
             {
-                Instantiate(prefabs[1],point,Quaternion.identity);
+                Instantiate(postPrefabs[1],point,Quaternion.identity);
                 bluePostOn = true;
             }
             /*else if(!yellowPostOn)
             {
-                Instantiate(prefabs[2],point,Quaternion.identity);
+                Instantiate(postPrefabs[2],point,Quaternion.identity);
                 yellowPostOn = true;
             }
             else if(!greenPostOn)
             {
-                Instantiate(prefabs[3],point,Quaternion.identity);
+                Instantiate(postPrefabs[3],point,Quaternion.identity);
                 greenPostOn = true;
             }*/
 		}
