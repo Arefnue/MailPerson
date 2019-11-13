@@ -329,7 +329,7 @@ PrefabInstance:
     - target: {fileID: 6223467171174464868, guid: 0a94e2eda6c18a5459f8d381e5859e9e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6223467171174464868, guid: 0a94e2eda6c18a5459f8d381e5859e9e,
         type: 3}
@@ -724,6 +724,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4f14c25c1aa2904c85959b96ac411e6, type: 3}
+--- !u!1 &452785153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452785155}
+  - component: {fileID: 452785154}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: GM
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &452785154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452785153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a511fb5d5ea334b49a6c6599b6cfb096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMailPerson: 
+  blueMailPerson: 
+  redPostOn: 0
+  bluePostOn: 0
+--- !u!4 &452785155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452785153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &477588927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4443136600572156828, guid: 5aa92a38046a8ac4bba143794639095b,
@@ -1142,7 +1189,7 @@ Transform:
   m_Children:
   - {fileID: 907175598}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &671296524
 PrefabInstance:
@@ -1387,7 +1434,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &708565373 stripped
 Transform:
@@ -2140,7 +2187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1182687845
 PrefabInstance:
@@ -2341,7 +2388,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1231335437
 MonoBehaviour:
@@ -2356,14 +2403,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  numberOfPost: 3
+  randomRange: 30
   maxDistance: 1
   postHeight: 0.5
+  mailBoxHeight: 0.5
   postPrefabs:
   - {fileID: 1934786277345604379, guid: 4c921322d66f8ae49bd6c29a9a0b849c, type: 3}
   - {fileID: 8730203285226854727, guid: 369d1d2190dbd584ca6e415b31a1c005, type: 3}
-  redPostOn: 0
-  bluePostOn: 0
+  mailBoxPrefabs:
+  - {fileID: 863820188180575113, guid: ebdd56fa1bd1ad543a925641604df54b, type: 3}
+  - {fileID: 8037395558673688635, guid: f02421744e4a14f43820d17cc4d74805, type: 3}
 --- !u!4 &1293646303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5313797096357065343, guid: ae01be9f5c94a924d9a83157b3666824,
@@ -3160,7 +3209,7 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1001 &1872673223
 PrefabInstance:
@@ -3868,7 +3917,7 @@ Transform:
   - {fileID: 2126695477}
   - {fileID: 1624013630}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2072161399
 PrefabInstance:
@@ -3925,7 +3974,7 @@ PrefabInstance:
     - target: {fileID: 6223467171174464868, guid: 0a94e2eda6c18a5459f8d381e5859e9e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6223467171174464868, guid: 0a94e2eda6c18a5459f8d381e5859e9e,
         type: 3}

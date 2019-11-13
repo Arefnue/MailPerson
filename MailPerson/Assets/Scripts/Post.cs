@@ -5,33 +5,48 @@ using UnityEngine;
 public class Post : MonoBehaviour
 {
     GameObject scripts;
+    GetRandomPointOnNavMesh randomComponent;
+    GameMaster gm;
+
+    public string playerName;
+
     
-    // Start is called before the first frame update
     void Start()
     {
         scripts = GameObject.FindGameObjectWithTag("Scripts");
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        randomComponent = scripts.GetComponent<GetRandomPointOnNavMesh>();
+        gm = GameMaster.GM;
         
+
     }
 
     private void OnTriggerEnter(Collider other) 
     {
+        //Check other is player
         if(other.CompareTag("Player"))
         {
+            
+            playerName = other.name; //Name of collided player
+
+            //Determine which color of post
             if(gameObject.CompareTag("RedPost"))
-            {
-                scripts.GetComponent<GetRandomPointOnNavMesh>().redPostOn = false;
+            {   
+                
+                gm.redMailPerson = playerName; //Determine which player can access redmailbox
+                randomComponent.CreateMailBox("Red");  //Create redmailbox
+                                         
             }
             else if(gameObject.CompareTag("BluePost"))
             {
-                scripts.GetComponent<GetRandomPointOnNavMesh>().bluePostOn = false;
+                
+                gm.blueMailPerson = playerName; //Determine which player can access bluemailbox
+                randomComponent.CreateMailBox("Blue"); //Create bluemailbox
+                
+                
             }
-            Destroy(gameObject);
+
+            Destroy(gameObject); // Destroy this post
+            
         }    
     }
 }

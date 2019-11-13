@@ -5,65 +5,95 @@ using UnityEngine.AI;
 
 public class GetRandomPointOnNavMesh : MonoBehaviour
 {
+    //Random Point Config
     public float range = 10.0f;
-    public int numberOfPost = 3;
+    public int randomRange = 3;
     public float maxDistance =1.0f;
+
+    //Objects' Config
     public float postHeight = 0.25f;
+    public float mailBoxHeight = 0.5f;
 
+    //Prefabs
     public GameObject[] postPrefabs;
+    public GameObject[] mailBoxPrefabs;
 
-    public bool redPostOn = false;
-    public bool bluePostOn = false;
-    /*public bool yellowPostOn = false;
-    public bool greenPostOn = false;*/
+
+    GameMaster gm;
+
+    private void Start() 
+    {
+        gm = GameMaster.GM;
+    }
 	
 
    
 	void Update() 
-    {
-        
+    {  
+
 		CreateObject();
 
 	}
 
     void CreateObject()
     {
-        Vector3 point;
-		if (RandomPoint(transform.position, range, out point)) {
-			Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-            
-            point.y = postHeight;
+        Vector3 point; //Location of object created
 
-            if(!redPostOn)
+		if (RandomPoint(transform.position, range, out point)) {
+			    
+            point.y = postHeight; //Fix object's y position
+
+            //Check which post must be created
+            if(!gm.redPostOn)
             {
-                Instantiate(postPrefabs[0],point,Quaternion.identity);
-                redPostOn = true;
+                Instantiate(postPrefabs[0],point,Quaternion.identity); //Create red post
+                gm.redPostOn = true; //Prevent creating new red post
+                
                 
             }
-            else if(!bluePostOn)
+            else if(!gm.bluePostOn)
             {
-                Instantiate(postPrefabs[1],point,Quaternion.identity);
-                bluePostOn = true;
+                Instantiate(postPrefabs[1],point,Quaternion.identity); //Create blue post
+                gm.bluePostOn = true; // Prevent creating new blue post
             }
-            /*else if(!yellowPostOn)
-            {
-                Instantiate(postPrefabs[2],point,Quaternion.identity);
-                yellowPostOn = true;
-            }
-            else if(!greenPostOn)
-            {
-                Instantiate(postPrefabs[3],point,Quaternion.identity);
-                greenPostOn = true;
-            }*/
+            
 		}
         
     }
 
+    public void CreateMailBox(string whichColor)
+    {   
+        
+        Vector3 point;
+		if (RandomPoint(transform.position, range, out point)) 
+        {   
+            point.y = mailBoxHeight;
+            
+            if(whichColor == "Red")
+            {
+                
+               Instantiate(mailBoxPrefabs[0],point,Quaternion.identity); 
+            }
+            else if(whichColor == "Blue")
+            {
+                
+                Instantiate(mailBoxPrefabs[1],point,Quaternion.identity);
+            }
+        }
+
+    }
+    
+
     // Get random point on navmesh
-    bool RandomPoint(Vector3 center, float range, out Vector3 result) {
-		for (int i = 0; i < numberOfPost; i++) {
+    public bool RandomPoint(Vector3 center, float range, out Vector3 result) 
+    {
+        //Find appropriate location
+		for (int i = 0; i < randomRange; i++) 
+        {
 			Vector3 randomPoint = center + Random.insideUnitSphere * range;
+
 			NavMeshHit hit;
+
 			if (NavMesh.SamplePosition(randomPoint, out hit, maxDistance, NavMesh.AllAreas)) {
 				result = hit.position;
 				return true;

@@ -12,6 +12,9 @@ TagManager:
   - Scripts
   - BluePost
   - RedPost
+  - RedMailBox
+  - BlueMailBox
+  - GM
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,7 @@ TagManager:
   - Obstacle
   - Player
   - Post
-  - 
+  - MailBox
   - 
   - 
   - 
