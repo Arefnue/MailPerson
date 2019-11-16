@@ -16,7 +16,6 @@ public class MailBox : MonoBehaviour
         //Decide collided object is player
         if(other.CompareTag("Player"))
         {
-            
             //Decide color of mailbox
             if(gameObject.CompareTag("RedMailBox"))
             {
@@ -25,8 +24,8 @@ public class MailBox : MonoBehaviour
                 {                       
                     gm.redMailPerson = ""; //Reset the string
                     gm.redPostOn = false; // Create new post
-                    Destroy(gameObject); // Destroy this mailbox
-
+                    
+                    Destroy(gameObject); // Destroy this mailbox                   
                 }
             }
             else if(gameObject.CompareTag("BlueMailBox"))
@@ -36,9 +35,10 @@ public class MailBox : MonoBehaviour
                 {
                     gm.blueMailPerson = ""; //Reset the string
                     gm.bluePostOn = false; // Create new post
+                    
                     Destroy(gameObject); // Destroy this mailbox
                 }
-            }
+            }          
         }
     }
 

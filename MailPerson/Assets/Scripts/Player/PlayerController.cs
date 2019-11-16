@@ -10,13 +10,19 @@ public class PlayerController : MonoBehaviour
 
     //Public variables
     public float movementSpeed;
+
+    GameMaster gm;
+
+    private void Start() 
+    {
+        gm = GameMaster.GM; 
+    }
      
     void Update()
     {
          FindPlayers();
          Movement();
-         
- 
+         TakePlayerNames();
     }
 
     void Movement()
@@ -49,5 +55,16 @@ public class PlayerController : MonoBehaviour
          }
      }
 
-     
+    void TakePlayerNames()
+    {
+        if(gm.player1Name == "")
+        {
+            gm.player1Name = players[0].name;
+        }
+        if(gm.player2Name == "")
+        {
+            gm.player2Name = players[1].name;
+        }
+    }
+         
 }

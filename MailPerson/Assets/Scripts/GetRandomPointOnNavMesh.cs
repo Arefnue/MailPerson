@@ -8,7 +8,7 @@ public class GetRandomPointOnNavMesh : MonoBehaviour
     //Random Point Config
     public float range = 10.0f;
     public int randomRange = 3;
-    public float maxDistance =1.0f;
+    public float maxDistance = 1.0f;
 
     //Objects' Config
     public float postHeight = 0.25f;
@@ -32,6 +32,7 @@ public class GetRandomPointOnNavMesh : MonoBehaviour
     {  
 
 		CreateObject();
+        
 
 	}
 

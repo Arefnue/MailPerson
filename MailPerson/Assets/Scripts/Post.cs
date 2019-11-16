@@ -9,7 +9,7 @@ public class Post : MonoBehaviour
     GameMaster gm;
 
     public string playerName;
-
+    
     
     void Start()
     {
@@ -19,7 +19,7 @@ public class Post : MonoBehaviour
         
 
     }
-
+  
     private void OnTriggerEnter(Collider other) 
     {
         //Check other is player
@@ -28,25 +28,22 @@ public class Post : MonoBehaviour
             
             playerName = other.name; //Name of collided player
 
-            //Determine which color of post
-            if(gameObject.CompareTag("RedPost"))
+            //Determine which color of post and prevent taking more post
+            if(gameObject.CompareTag("RedPost") && !(playerName == gm.blueMailPerson))
             {   
                 
                 gm.redMailPerson = playerName; //Determine which player can access redmailbox
                 randomComponent.CreateMailBox("Red");  //Create redmailbox
-                                         
+                Destroy(gameObject); // Destroy this post                   
             }
-            else if(gameObject.CompareTag("BluePost"))
+            else if(gameObject.CompareTag("BluePost") && !(playerName == gm.redMailPerson))
             {
                 
                 gm.blueMailPerson = playerName; //Determine which player can access bluemailbox
-                randomComponent.CreateMailBox("Blue"); //Create bluemailbox
-                
-                
+                randomComponent.CreateMailBox("Blue"); //Create bluemailbox 
+                Destroy(gameObject); // Destroy this post            
             }
-
-            Destroy(gameObject); // Destroy this post
-            
+                              
         }    
     }
 }

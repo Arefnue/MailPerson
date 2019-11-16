@@ -7,6 +7,10 @@ public class GameMaster : MonoBehaviour
 {
     public static GameMaster GM;
 
+    //Player Names
+    public string player1Name = "";
+    public string player2Name = "";
+    
     //Hold which player takes which post
     public string redMailPerson = "";  
     public string blueMailPerson = "";
@@ -14,8 +18,7 @@ public class GameMaster : MonoBehaviour
     //Create new post
     public bool redPostOn = false;
     public bool bluePostOn = false;
-
-    
+  
     private void Awake() 
     {
         //Singleton
@@ -31,7 +34,5 @@ public class GameMaster : MonoBehaviour
         }  
     }
 
-    
 
-    
 }
