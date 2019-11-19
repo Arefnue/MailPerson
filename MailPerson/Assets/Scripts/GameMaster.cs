@@ -18,6 +18,10 @@ public class GameMaster : MonoBehaviour
     //Create new post
     public bool redPostOn = false;
     public bool bluePostOn = false;
+
+    //Score
+    public int score1 = 0;
+    public int score2 = 0;
   
     private void Awake() 
     {
@@ -34,5 +38,22 @@ public class GameMaster : MonoBehaviour
         }  
     }
 
+    public void ResetGameMaster()
+    {
+        //Player Names
+        player1Name = "";
+        player2Name = "";
+        
+        //Hold which player takes which post
+        redMailPerson = "";  
+        blueMailPerson = "";
 
+        //Create new post
+        redPostOn = false;
+        bluePostOn = false;
+
+        //Score
+        score1 = 0;
+        score2 = 0;
+    }
 }

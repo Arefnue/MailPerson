@@ -24,7 +24,8 @@ public class MailBox : MonoBehaviour
                 {                       
                     gm.redMailPerson = ""; //Reset the string
                     gm.redPostOn = false; // Create new post
-                    
+
+                    GiveScore(other.name); //Gives score
                     Destroy(gameObject); // Destroy this mailbox                   
                 }
             }
@@ -35,12 +36,23 @@ public class MailBox : MonoBehaviour
                 {
                     gm.blueMailPerson = ""; //Reset the string
                     gm.bluePostOn = false; // Create new post
-                    
+
+                    GiveScore(other.name); // Gives score
                     Destroy(gameObject); // Destroy this mailbox
                 }
             }          
         }
     }
 
-    
+    private void GiveScore(string PlayerName)
+    {
+        if(PlayerName == gm.player1Name)
+        {
+            gm.score1 +=1;
+        }
+        else if(PlayerName == gm.player2Name)
+        {
+            gm.score2 +=1;
+        }
+    }
 }
