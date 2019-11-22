@@ -5,26 +5,41 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
+    //Player Names
+    public TextMeshProUGUI player1Name;
+    public TextMeshProUGUI player2Name;
+    private bool playerNamesAdded = false;
+    //Player scores
     public TextMeshProUGUI player1Score;
     public TextMeshProUGUI player2Score;
+    //Timer
     public TextMeshProUGUI timeCounter;
     public float startTime = 60.0f;
-    private int seconds;
+    //Change scene
     public int nextScene;
+
     GameMaster gm;
     
     
     private void Start() 
     {
         gm = GameMaster.GM;
-               
+
     }
     // Update is called once per frame
     void Update()
     {
-     player1Score.text = "x"+gm.score1.ToString();
-     player2Score.text = gm.score2.ToString() + "x";
-     TimeCount();
+        if(!playerNamesAdded)
+        {
+            player1Name.text = gm.player1Name;
+            player2Name.text = gm.player2Name;
+            playerNamesAdded = true;
+        }
+
+        player1Score.text = "x"+gm.score1.ToString();
+        player2Score.text = gm.score2.ToString() + "x";
+        
+        TimeCount();
     }
 
     private void TimeCount()

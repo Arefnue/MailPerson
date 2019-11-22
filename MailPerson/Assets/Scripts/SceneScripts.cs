@@ -7,7 +7,7 @@ public class SceneScripts : MonoBehaviour
 {
     GameMaster gm;
 
-    public int startGameScene;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +16,9 @@ public class SceneScripts : MonoBehaviour
     }
 
 
-    public void StartGame()
+    public void StartGame(int id)
     {
-        SceneManager.LoadScene(startGameScene);
+        SceneManager.LoadScene(id);
         gm.ResetGameMaster();
     }
 
