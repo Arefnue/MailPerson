@@ -17,15 +17,13 @@ public class Post : MonoBehaviour
         randomComponent = scripts.GetComponent<GetRandomPointOnNavMesh>();
         gm = GameMaster.GM;
         
-
     }
   
     private void OnTriggerEnter(Collider other) 
     {
         //Check other is player
         if(other.CompareTag("Player"))
-        {
-            
+        {         
             playerName = other.name; //Name of collided player
 
             //Determine which color of post and prevent taking more post

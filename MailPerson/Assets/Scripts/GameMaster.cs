@@ -8,8 +8,8 @@ public class GameMaster : MonoBehaviour
     public static GameMaster GM;
 
     //Player Names
-    public string player1Name = "";
-    public string player2Name = "";
+    public string player1Name = "Player 1";
+    public string player2Name = "Player 2";
     
     //Hold which player takes which post
     public string redMailPerson = "";  
@@ -22,6 +22,11 @@ public class GameMaster : MonoBehaviour
     //Score
     public int score1 = 0;
     public int score2 = 0;
+
+    //Powerups
+    //Speed
+    public int player1Speed = 5;
+    public int player2Speed = 5;
   
     private void Awake() 
     {
@@ -41,8 +46,8 @@ public class GameMaster : MonoBehaviour
     public void ResetGameMaster()
     {
         //Player Names
-        player1Name = "";
-        player2Name = "";
+        player1Name = "Player 1";
+        player2Name = "Player 2";
         
         //Hold which player takes which post
         redMailPerson = "";  

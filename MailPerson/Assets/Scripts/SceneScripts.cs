@@ -16,7 +16,7 @@ public class SceneScripts : MonoBehaviour
     }
 
 
-    public void StartGame(int id)
+    public void ChangeAndReset(int id)
     {
         SceneManager.LoadScene(id);
         gm.ResetGameMaster();

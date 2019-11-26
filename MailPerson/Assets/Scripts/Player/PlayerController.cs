@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Taking player gameobjects
-    public GameObject playerPrefab;
-    List<GameObject> players = new List<GameObject>();
+    public GameObject player1;
+    public GameObject player2;
 
     //Public variables
     public float movementSpeed;
+
+    //Bool
+    private bool nameTaken = false;
 
     GameMaster gm;
 
@@ -20,13 +23,17 @@ public class PlayerController : MonoBehaviour
      
     void Update()
     {
-         FindPlayers();
-         Movement();
-         TakePlayerNames();
+        
+        Movement();
+        if(!nameTaken)
+        {
+            TakePlayerNames();
+        }
+            
     }
 
     void Movement()
-     {
+    {
         //Player1 axis 
         float horizontal_1 = Input.GetAxis("Horizontal1");
         float vertical_1 = Input.GetAxis("Vertical1");
@@ -40,31 +47,16 @@ public class PlayerController : MonoBehaviour
         Vector3 movement_2 = new Vector3(horizontal_2,0,vertical_2);
 
         //Move
-        players[0].transform.Translate(movement_1 * movementSpeed * Time.deltaTime, Space.World);
-        players[1].transform.Translate(movement_2 * movementSpeed * Time.deltaTime, Space.World);
+        player1.transform.Translate(movement_1 * movementSpeed * Time.deltaTime, Space.World);
+        player2.transform.Translate(movement_2 * movementSpeed * Time.deltaTime, Space.World);
 
-     }
-
-    void FindPlayers()
-     {
-         // Find player prefabs and list them
-         foreach(GameObject player in GameObject.FindObjectsOfType (typeof(GameObject)))
-         {
-             if(player.tag == "Player" && !players.Contains(player))
-                 players.Add (player);
-         }
-     }
+    }
 
     void TakePlayerNames()
     {
-        if(gm.player1Name == "")
-        {
-            gm.player1Name = players[0].name;
-        }
-        if(gm.player2Name == "")
-        {
-            gm.player2Name = players[1].name;
-        }
+        player1.name = gm.player1Name;
+        player2.name = gm.player2Name;
+        nameTaken = true;
     }
          
 }

@@ -358,6 +358,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a94e2eda6c18a5459f8d381e5859e9e, type: 3}
+--- !u!1 &171766848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6223467171174464864, guid: 0a94e2eda6c18a5459f8d381e5859e9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 171766847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &190546313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4899963270023404986, guid: f4f14c25c1aa2904c85959b96ac411e6,
@@ -452,7 +458,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1231335439}
-        m_MethodName: ChangeScene
+        m_MethodName: ChangeAndReset
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2956,8 +2962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a87fd62289ac8d4281f08f5921359fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6223467171174464864, guid: 0a94e2eda6c18a5459f8d381e5859e9e,
-    type: 3}
+  player1: {fileID: 2072161400}
+  player2: {fileID: 171766848}
   movementSpeed: 5
 --- !u!4 &1231335436
 Transform:
@@ -5251,6 +5257,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a94e2eda6c18a5459f8d381e5859e9e, type: 3}
+--- !u!1 &2072161400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6223467171174464864, guid: 0a94e2eda6c18a5459f8d381e5859e9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2072161399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2126695477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8908191128745622373, guid: 22ba5b3ddc8134e448078c0e80c6e67c,
