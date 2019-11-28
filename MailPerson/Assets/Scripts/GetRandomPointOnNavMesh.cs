@@ -13,11 +13,11 @@ public class GetRandomPointOnNavMesh : MonoBehaviour
     //Objects' Config
     public float postHeight = 0.25f;
     public float mailBoxHeight = 0.5f;
+    public float powerHeight = 0.5f;
 
     //Prefabs
     public GameObject[] postPrefabs;
     public GameObject[] mailBoxPrefabs;
-
 
     GameMaster gm;
 
@@ -26,14 +26,9 @@ public class GetRandomPointOnNavMesh : MonoBehaviour
         gm = GameMaster.GM;
     }
 	
-
-   
 	void Update() 
     {  
-
-		CreateObject();
-        
-
+		CreateObject();      
 	}
 
     void CreateObject()
@@ -49,8 +44,6 @@ public class GetRandomPointOnNavMesh : MonoBehaviour
             {
                 Instantiate(postPrefabs[0],point,Quaternion.identity); //Create red post
                 gm.redPostOn = true; //Prevent creating new red post
-                
-                
             }
             else if(!gm.bluePostOn)
             {
@@ -71,17 +64,26 @@ public class GetRandomPointOnNavMesh : MonoBehaviour
             point.y = mailBoxHeight;
             
             if(whichColor == "Red")
-            {
-                
+            {  
                Instantiate(mailBoxPrefabs[0],point,Quaternion.identity); 
             }
             else if(whichColor == "Blue")
-            {
-                
+            {  
                 Instantiate(mailBoxPrefabs[1],point,Quaternion.identity);
             }
         }
 
+    }
+
+    public void CreatePower(GameObject power)
+    {
+        Vector3 point;
+
+        if(RandomPoint(transform.position, range, out point))
+        {
+            point.y = powerHeight;
+            Instantiate(power,point,Quaternion.identity);
+        }
     }
     
 

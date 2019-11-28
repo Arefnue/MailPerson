@@ -24,10 +24,10 @@ public class GameMaster : MonoBehaviour
     public int score2 = 0;
 
     //Powerups
-    //Speed
-    public int player1Speed = 5;
-    public int player2Speed = 5;
-  
+    public int player1HasPowerID = -1;
+    public int player2HasPowerID = -1;
+    public int currentNumberOfPower = 0;
+
     private void Awake() 
     {
         //Singleton
@@ -60,5 +60,11 @@ public class GameMaster : MonoBehaviour
         //Score
         score1 = 0;
         score2 = 0;
+        
+        //Powerups
+        player1HasPowerID = -1;
+        player2HasPowerID = -1;
+        currentNumberOfPower = 0;
+
     }
 }

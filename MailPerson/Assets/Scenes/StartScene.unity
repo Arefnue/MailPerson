@@ -1242,6 +1242,9 @@ MonoBehaviour:
   bluePostOn: 0
   score1: 0
   score2: 0
+  player1HasPowerID: -1
+  player2HasPowerID: -1
+  currentNumberOfPower: 0
 --- !u!4 &603434825
 Transform:
   m_ObjectHideFlags: 0

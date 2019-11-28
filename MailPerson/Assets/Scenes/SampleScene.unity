@@ -364,6 +364,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 171766847}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &171766849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171766848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a87fd62289ac8d4281f08f5921359fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 2
+  movementSpeed: 5
+  duration: 5
 --- !u!4 &190546313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4899963270023404986, guid: f4f14c25c1aa2904c85959b96ac411e6,
@@ -968,6 +983,9 @@ MonoBehaviour:
   bluePostOn: 0
   score1: 0
   score2: 0
+  player1HasPowerID: 0
+  player2HasPowerID: 0
+  currentNumberOfPower: 0
 --- !u!4 &452785155
 Transform:
   m_ObjectHideFlags: 0
@@ -2939,10 +2957,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1231335436}
-  - component: {fileID: 1231335435}
   - component: {fileID: 1231335437}
   - component: {fileID: 1231335438}
   - component: {fileID: 1231335439}
+  - component: {fileID: 1231335435}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Scripts
@@ -2959,12 +2977,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1231335434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a87fd62289ac8d4281f08f5921359fc, type: 3}
+  m_Script: {fileID: 11500000, guid: bf1c8799b1a9ca64d8fc435474a7ed54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 2072161400}
-  player2: {fileID: 171766848}
-  movementSpeed: 5
+  powers:
+  - {fileID: 3123695459535469983, guid: de2ca74551e93c945b2757417b743761, type: 3}
+  - {fileID: 3975922429529570539, guid: f94d827fb7870fd4cb2c348ec0cd1948, type: 3}
+  MaxnumberOfPower: 2
+  minTime: 2
+  maxTime: 5
 --- !u!4 &1231335436
 Transform:
   m_ObjectHideFlags: 0
@@ -2996,6 +3017,7 @@ MonoBehaviour:
   maxDistance: 1
   postHeight: 0.5
   mailBoxHeight: 0.5
+  powerHeight: 0.5
   postPrefabs:
   - {fileID: 1934786277345604379, guid: 4c921322d66f8ae49bd6c29a9a0b849c, type: 3}
   - {fileID: 8730203285226854727, guid: 369d1d2190dbd584ca6e415b31a1c005, type: 3}
@@ -3019,7 +3041,7 @@ MonoBehaviour:
   player1Score: {fileID: 1630993837}
   player2Score: {fileID: 1417725580}
   timeCounter: {fileID: 1198041961}
-  startTime: 10
+  startTime: 30
   nextScene: 2
 --- !u!114 &1231335439
 MonoBehaviour:
@@ -5263,6 +5285,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2072161399}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2072161401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072161400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a87fd62289ac8d4281f08f5921359fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 1
+  movementSpeed: 5
+  duration: 5
 --- !u!4 &2126695477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8908191128745622373, guid: 22ba5b3ddc8134e448078c0e80c6e67c,

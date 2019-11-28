@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //Taking player gameobjects
-    public GameObject player1;
-    public GameObject player2;
+    //Which player
+    public int playerID;
 
     //Public variables
     public float movementSpeed;
+    public int duration = 5;
 
     //Bool
     private bool nameTaken = false;
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         
         Movement();
+        UsePower();
         if(!nameTaken)
         {
             TakePlayerNames();
@@ -34,29 +35,86 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        //Player1 axis 
-        float horizontal_1 = Input.GetAxis("Horizontal1");
-        float vertical_1 = Input.GetAxis("Vertical1");
+        if(playerID == 1)
+        {
+            //Player1 axis 
+            float horizontal_1 = Input.GetAxis("Horizontal1");
+            float vertical_1 = Input.GetAxis("Vertical1");
+            //Top-down vector config
+            Vector3 movement_1 = new Vector3(horizontal_1,0,vertical_1);
+            //Move
+            transform.Translate(movement_1 * movementSpeed * Time.deltaTime, Space.World);
+        }
+        else if(playerID == 2)
+        {
+            //Player2 axis
+            float horizontal_2 = Input.GetAxis("Horizontal2");
+            float vertical_2 = Input.GetAxis("Vertical2");
+            //Top-down vector config
+            Vector3 movement_2 = new Vector3(horizontal_2,0,vertical_2);
+            //Move
+            transform.Translate(movement_2 * movementSpeed * Time.deltaTime, Space.World);
+        }
+        
+    }
 
-        //Player2 axis
-        float horizontal_2 = Input.GetAxis("Horizontal2");
-        float vertical_2 = Input.GetAxis("Vertical2");
-
-        //Top-down vector config
-        Vector3 movement_1 = new Vector3(horizontal_1,0,vertical_1);
-        Vector3 movement_2 = new Vector3(horizontal_2,0,vertical_2);
-
-        //Move
-        player1.transform.Translate(movement_1 * movementSpeed * Time.deltaTime, Space.World);
-        player2.transform.Translate(movement_2 * movementSpeed * Time.deltaTime, Space.World);
-
+    void UsePower()
+    {
+        if(playerID == 1)
+        {
+            if(Input.GetButtonDown("UsePower1"))
+            {
+                
+                StartCoroutine(Powers(gm.player1HasPowerID));
+                gm.player1HasPowerID = -1;
+            }
+        }    
+        else if(playerID == 2)
+        {
+            if(Input.GetButtonDown("UsePower2"))
+            {
+                
+                StartCoroutine(Powers(gm.player2HasPowerID));
+                gm.player2HasPowerID = -1;
+            }
+        }
     }
 
     void TakePlayerNames()
     {
-        player1.name = gm.player1Name;
-        player2.name = gm.player2Name;
-        nameTaken = true;
+        if(playerID == 1)
+        {
+            name = gm.player1Name;
+            nameTaken = true;
+        }
+        else if(playerID == 2)
+        {
+            name = gm.player2Name;
+            nameTaken = true;
+        }      
     }
          
+
+    IEnumerator Powers(int PowerID)
+    {
+        if(PowerID == -1)
+        {
+            yield return null;
+        }
+        else if(PowerID == 0)
+        {
+            //Move 2x
+            movementSpeed = movementSpeed*2;
+            yield return new WaitForSeconds(duration);
+            movementSpeed = movementSpeed/2;
+        }
+        else if(PowerID == 1)
+        {
+            //Move 3x
+            movementSpeed = movementSpeed*3;
+            yield return new WaitForSeconds(duration);
+            movementSpeed = movementSpeed/3;
+        }
+    }
+
 }
