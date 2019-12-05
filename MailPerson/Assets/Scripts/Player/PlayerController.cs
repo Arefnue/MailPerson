@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     //Public variables
     public float movementSpeed;
     public int duration = 5;
+    public float rotateSpeed = 180f;
 
     //Bool
     private bool nameTaken = false;
@@ -42,8 +43,12 @@ public class PlayerController : MonoBehaviour
             float vertical_1 = Input.GetAxis("Vertical1");
             //Top-down vector config
             Vector3 movement_1 = new Vector3(horizontal_1,0,vertical_1);
+            //Rotation
+            transform.rotation = Quaternion.RotateTowards (transform.rotation, Quaternion.LookRotation (-movement_1), rotateSpeed * Time.deltaTime);
             //Move
             transform.Translate(movement_1 * movementSpeed * Time.deltaTime, Space.World);
+
+            
         }
         else if(playerID == 2)
         {
@@ -52,6 +57,8 @@ public class PlayerController : MonoBehaviour
             float vertical_2 = Input.GetAxis("Vertical2");
             //Top-down vector config
             Vector3 movement_2 = new Vector3(horizontal_2,0,vertical_2);
+            //Rotation
+            transform.rotation = Quaternion.RotateTowards (transform.rotation, Quaternion.LookRotation (-movement_2), rotateSpeed * Time.deltaTime);
             //Move
             transform.Translate(movement_2 * movementSpeed * Time.deltaTime, Space.World);
         }
